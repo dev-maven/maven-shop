@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+	reactStrictMode: true,
+	images: {
+		domains: ['sangw.in', 'localhost', 'picsum.photos', 'i.pinimg.com'],
+	},
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
