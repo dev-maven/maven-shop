@@ -31,6 +31,7 @@ h6 {
 	color: white;
 	cursor: pointer;
 	transition: all 0.4s ease-in-out;
+	margin: 0 8px;
 }
 
 .button:hover {
@@ -38,7 +39,7 @@ h6 {
 }
 
 .stroked_button {
-	margin-left: 8px;
+	margin: 0;
 	background-color: white;
 	color: #510585;
 	border: 1px solid #510585;
@@ -47,4 +48,32 @@ h6 {
 .stroked_button:hover {
 	background-color: #083e80;
 	color: white;
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 30px;
+}
+
+.form_actions {
+	display: block;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.error_message {
+	text-align: center;
+	color: red;
+	margin-top: -13px;
+	display: block;
+}
+
+.uploaded_image {
+	width: 150px;
+	height: 150px;
+	object-fit: contain;
+	display: block;
+	margin: auto;
 }

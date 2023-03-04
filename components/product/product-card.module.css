@@ -83,10 +83,3 @@
 .user_info small {
 	color: #545d7a;
 }
-
-.actions {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-top: 20px;
-}

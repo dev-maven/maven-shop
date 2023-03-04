@@ -50,6 +50,7 @@ export default function ProductList() {
 			{products.map((product) => (
 				<ProductCard
 					key={product.id}
+					_id={product.id}
 					title={product.title}
 					description={product.description}
 					price={product.price}

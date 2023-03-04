@@ -44,15 +44,21 @@ export default function ProductCard(props) {
 					</div>
 				</div>
 				<div className={styles.actions}>
-					<Button onClick={handler} disabled='false' loading='' type='button'>
+					<Button
+						onClick={handler}
+						design=''
+						disabled={false}
+						loading={false}
+						type='button'
+					>
 						Add to Cart
 					</Button>
 
 					<Button
 						design='stroked_button'
 						onClick={handler}
-						disabled='false'
-						loading=''
+						disabled={false}
+						loading={false}
 						type='button'
 					>
 						Buy Now
@@ -68,5 +74,5 @@ ProductCard.propTypes = {
 	price: PropTypes.number.isRequired,
 	description: PropTypes.string.isRequired,
 	imageSrc: PropTypes.string.isRequired,
-	_id: PropTypes.string.isRequired,
+	_id: PropTypes.number.isRequired,
 };

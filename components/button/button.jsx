@@ -18,10 +18,15 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
-	design: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired,
+	design: PropTypes.string,
+	onClick: PropTypes.func,
 	disabled: PropTypes.bool.isRequired,
 	loading: PropTypes.bool.isRequired,
 	type: PropTypes.string.isRequired,
-	children: PropTypes.element.isRequired,
+	children: PropTypes.string.isRequired,
+};
+
+Button.defaultProps = {
+	onClick: null,
+	design: '',
 };
