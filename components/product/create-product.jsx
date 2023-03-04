@@ -8,6 +8,7 @@ export default function CreateProduct(props) {
 	const onSubmitHandler = (value) => {
 		setLoading(false);
 		console.log(value);
+		hideModal();
 	};
 	return (
 		<ProductForm

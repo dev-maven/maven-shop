@@ -5,11 +5,12 @@ import PropTypes from 'prop-types';
 
 export default function Button(props) {
 	const { design, onClick, disabled, loading, type, children } = props;
+
 	return (
 		<button
 			className={['button', `${design}`].join(' ')}
 			onClick={onClick}
-			disabled={disabled || loading}
+			disabled={disabled}
 			type={type}
 		>
 			{loading ? 'Loading...' : children}

@@ -43,7 +43,7 @@ export default function ProductCard(props) {
 						<small>2h ago</small>
 					</div>
 				</div>
-				<div className={styles.actions}>
+				<div className='actions'>
 					<Button
 						onClick={handler}
 						design=''

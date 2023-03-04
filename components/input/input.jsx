@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './input.module.css';
 
-const Input = React.forwardRef((props) => {
+function Input(props) {
 	// const inputRef = useRef();
 
 	// const activate = () => {
@@ -60,7 +60,7 @@ const Input = React.forwardRef((props) => {
 			{content}
 		</div>
 	);
-});
+}
 
 export default Input;
 

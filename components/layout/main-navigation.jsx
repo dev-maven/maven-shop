@@ -27,18 +27,37 @@ function MainNavigation() {
 				</Link>
 				<nav>
 					<ul>
-						{session && !loading && (
+						{!session && !loading && (
 							<li>
-								<Link href='/auth'>Login</Link>
-							</li>
-						)}
-						{session && !loading && (
-							<li>
-								<Link href='/auth'>Register</Link>
+								<Link href='/register'>
+									<Button
+										design=''
+										disabled={false}
+										loading={false}
+										type='button'
+									>
+										Register
+									</Button>
+								</Link>
 							</li>
 						)}
 
-						{!session && (
+						{!session && !loading && (
+							<li>
+								<Link href='/login'>
+									<Button
+										design='stroked_button'
+										disabled={false}
+										loading={false}
+										type='button'
+									>
+										Login
+									</Button>
+								</Link>
+							</li>
+						)}
+
+						{session && (
 							<li>
 								<Button
 									design=''
@@ -51,7 +70,7 @@ function MainNavigation() {
 								</Button>
 							</li>
 						)}
-						{!session && (
+						{session && (
 							<li>
 								<Button
 									design=''

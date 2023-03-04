@@ -36,7 +36,23 @@ export default function ProductForm(props) {
 	const isPriceValid = priceInput.trim() === '' && priceTouched;
 	const isImageValid = imageInput.trim() === '' && imageTouched;
 
-	const submitHandler = () => {};
+	const formValid = !!(
+		titleInput &&
+		descriptionInput &&
+		imageInput &&
+		priceInput
+	);
+
+	const submitHandler = (event) => {
+		event.preventDefault();
+		const inputObj = {
+			title: titleInput,
+			description: descriptionInput,
+			imageSrc: imageInput,
+			price: priceInput,
+		};
+		acceptModal(inputObj);
+	};
 	const imageUploadHandler = (files) => {
 		if (files) {
 			generateBase64FromImage(files[0])
@@ -50,11 +66,7 @@ export default function ProductForm(props) {
 	};
 
 	return (
-		<Modal
-			title={header}
-			onCancelModal={cancelModal}
-			onAcceptModal={acceptModal}
-		>
+		<Modal title={header} dismiss={cancelModal}>
 			<form onSubmit={submitHandler}>
 				<Input
 					id='title'
@@ -130,7 +142,12 @@ export default function ProductForm(props) {
 						Cancel
 					</Button>
 
-					<Button design='' disabled={false} loading={isLoading} type='submit'>
+					<Button
+						design=''
+						disabled={!formValid}
+						loading={isLoading}
+						type='submit'
+					>
 						Add Product
 					</Button>
 				</div>

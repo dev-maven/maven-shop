@@ -10,7 +10,8 @@ body {
 }
 
 main {
-	margin: 6rem 0 0;
+	margin: 3rem 0 0;
+	height: 95vh;
 }
 
 h1,
@@ -50,6 +51,21 @@ h6 {
 	color: white;
 }
 
+.button:disabled {
+	background: #ccc;
+	color: #888888;
+	cursor: not-allowed;
+	border: #ccc;
+	box-shadow: none;
+}
+
+.button:disabled:hover,
+.button:disabled:active {
+	background: #ccc;
+	color: #888888;
+	border: #ccc;
+}
+
 .actions {
 	display: flex;
 	align-items: center;
@@ -76,4 +92,51 @@ h6 {
 	object-fit: contain;
 	display: block;
 	margin: auto;
+}
+
+.auth {
+	margin: 3rem auto;
+	width: 95%;
+	max-width: 50rem;
+	height: 60vh;
+	border-radius: 6px;
+	background-color: #0e1228;
+	box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+	padding: 1rem;
+	text-align: center;
+	padding-top: 10vh;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.auth h1 {
+	text-align: center;
+	color: white;
+	margin-bottom: 0;
+}
+
+.auth label {
+	display: block;
+	color: white;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+
+.auth .link {
+	color: #ddde0a;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.auth .link:hover {
+	text-decoration: underline;
+}
+
+.auth p {
+	color: #fff;
+}
+
+.auth hr {
+	margin: 10px 0 30px;
 }
