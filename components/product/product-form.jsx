@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 import Modal from '../modal/modal';
-import Input from '../input/input';
-import Button from '../button/button';
+import Input from '../UI/input/input';
+import Button from '../UI/button/button';
 import generateBase64FromImage from '../../util/image';
 
 export default function ProductForm(props) {

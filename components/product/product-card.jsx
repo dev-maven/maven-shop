@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import styles from './product-card.module.css';
-import Button from '../button/button';
+import Button from '../UI/button/button';
 
 export default function ProductCard(props) {
 	const { title, price, description, imageSrc, _id } = props;
@@ -33,7 +33,7 @@ export default function ProductCard(props) {
 				<div className={styles.user}>
 					<Image
 						className={styles.image}
-						src={imageSrc}
+						src='/user.svg'
 						alt={title}
 						width={40}
 						height={40}
@@ -43,25 +43,15 @@ export default function ProductCard(props) {
 						<small>2h ago</small>
 					</div>
 				</div>
-				<div className='actions'>
+				<div className={styles.actions}>
 					<Button
 						onClick={handler}
-						design=''
-						disabled={false}
-						loading={false}
-						type='button'
-					>
-						Add to Cart
-					</Button>
-
-					<Button
 						design='stroked_button'
-						onClick={handler}
 						disabled={false}
 						loading={false}
 						type='button'
 					>
-						Buy Now
+						View Detail
 					</Button>
 				</div>
 			</div>

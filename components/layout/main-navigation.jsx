@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/client';
 
 import classes from './main-navigation.module.css';
-import Button from '../button/button';
+import Button from '../UI/button/button';
 import CreateProduct from '../product/create-product';
 
 function MainNavigation() {

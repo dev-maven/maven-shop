@@ -83,3 +83,10 @@
 .user_info small {
 	color: #545d7a;
 }
+
+.actions {
+	display: block;
+	text-align: center;
+	margin: auto;
+	margin-top: 30px;
+}

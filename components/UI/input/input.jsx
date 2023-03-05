@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import React from 'react';
@@ -5,47 +7,39 @@ import PropTypes from 'prop-types';
 import classes from './input.module.css';
 
 function Input(props) {
-	// const inputRef = useRef();
-
-	// const activate = () => {
-	// 	inputRef.current.focus();
-	// };
-
-	// useImperativeHandle(ref, () => ({
-	// 	focus: activate,
-	// }));
-
+	const { control, isValid, id, label, type, value, onChange, onBlur, rows } =
+		props;
 	let content;
 
-	if (props.control === 'textarea') {
+	if (control === 'textarea') {
 		content = (
 			<textarea
-				type={props.type}
-				id={props.id}
-				value={props.value}
-				onChange={props.onChange}
-				onBlur={props.onBlur}
-				rows={props.rows}
+				type={type}
+				id={id}
+				value={value}
+				onChange={onChange}
+				onBlur={onBlur}
+				rows={rows}
 			/>
 		);
-	} else if (props.control === 'image') {
+	} else if (control === 'image') {
 		content = (
 			<input
 				type='file'
-				id={props.id}
-				value={props.value}
-				onBlur={props.onBlur}
-				onChange={(e) => props.onChange(e.target.files)}
+				id={id}
+				value={value}
+				onBlur={onBlur}
+				onChange={(e) => onChange(e.target.files)}
 			/>
 		);
 	} else {
 		content = (
 			<input
-				type={props.type}
-				id={props.id}
-				value={props.value}
-				onBlur={props.onBlur}
-				onChange={props.onChange}
+				type={type}
+				id={id}
+				value={value}
+				onBlur={onBlur}
+				onChange={onChange}
 			/>
 		);
 	}
@@ -53,10 +47,10 @@ function Input(props) {
 	return (
 		<div
 			className={`${classes.control} ${
-				props.isValid === false ? classes.invalid : ''
+				isValid === false ? classes.invalid : ''
 			}`}
 		>
-			<label htmlFor={props.id}>{props.label}</label>
+			<label htmlFor={id}>{label}</label>
 			{content}
 		</div>
 	);

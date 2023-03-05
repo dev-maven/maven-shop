@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Input from '../components/input/input';
-import Button from '../components/button/button';
+import Input from '../components/UI/input/input';
+import Button from '../components/UI/button/button';
 
 export default function Register() {
 	const [email, setEmail] = useState('');
