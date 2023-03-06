@@ -1,0 +1,7 @@
+{
+	"env": {
+		"MONGO_USER": "maven",
+		"MONGO_PASSWORD": "maven",
+		"MONGO_DB": "shop"
+	}
+}
