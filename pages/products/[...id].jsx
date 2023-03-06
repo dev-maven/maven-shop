@@ -27,9 +27,9 @@ export default function Detail() {
 						throw new Error(data.message || 'Something went wrong');
 					});
 				})
-				.then((data) => {
-					if (data.product) {
-						setProduct(data.product);
+				.then((resData) => {
+					if (resData.data) {
+						setProduct(resData.data);
 					}
 					setIsLoading(false);
 				})

@@ -4,8 +4,17 @@ import { useRouter } from 'next/router';
 import Input from '../components/UI/input/input';
 import Button from '../components/UI/button/button';
 import NotificationContext from '../store/notification-context';
+import AuthContext from '../store/auth-context';
 
 export default function Register() {
+	const router = useRouter();
+	const authCtx = useContext(AuthContext);
+	const { isLoggedIn } = authCtx;
+
+	if (isLoggedIn) {
+		router.replace('/');
+	}
+
 	const notificationCtx = useContext(NotificationContext);
 	const { showNotification } = notificationCtx;
 	const [email, setEmail] = useState('');
@@ -17,7 +26,6 @@ export default function Register() {
 	const [nameTouched, setNameTouched] = useState();
 	const [passwordTouched, setPasswordTouched] = useState();
 	const [userTypeTouched, setUserTypeTouched] = useState();
-	const router = useRouter();
 
 	const isEmailValid = !/\S+@\S+\.\S+/.test(email) && emailTouched;
 	const isPasswordValid = password.trim() === '' && passwordTouched;

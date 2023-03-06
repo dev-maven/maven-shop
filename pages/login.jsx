@@ -8,6 +8,13 @@ import NotificationContext from '../store/notification-context';
 import AuthContext from '../store/auth-context';
 
 export default function Login() {
+	const router = useRouter();
+	const authCtx = useContext(AuthContext);
+	const { login, isLoggedIn } = authCtx;
+
+	if (isLoggedIn) {
+		router.replace('/');
+	}
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
@@ -15,12 +22,9 @@ export default function Login() {
 	const [passwordTouched, setPasswordTouched] = useState('');
 	const notificationCtx = useContext(NotificationContext);
 	const { showNotification } = notificationCtx;
-	const authCtx = useContext(AuthContext);
-	const { login } = authCtx;
 
 	const isEmailValid = !/\S+@\S+\.\S+/.test(email) && emailTouched;
 	const isPasswordValid = password.trim() === '' && passwordTouched;
-	const router = useRouter();
 
 	const formValid = !!(email && password);
 
@@ -48,12 +52,12 @@ export default function Login() {
 					throw new Error(data.message || 'Something went wrong');
 				});
 			})
-			.then((data) => {
+			.then((resData) => {
 				const remainingMilliseconds = 60 * 60 * 1000;
 				const expiryDate = new Date(
 					new Date().getTime() + remainingMilliseconds
 				);
-				login(data.token, expiryDate);
+				login(resData.data.token, expiryDate);
 				router.replace('/');
 				setIsLoading(false);
 			})
