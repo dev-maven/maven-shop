@@ -32,12 +32,16 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 Coverage:
 
-● NodeJS/Express
-● TypeScript/JavaScript
-● Eslint with Airbnb style-guide
-● MongoDB
-● ReactJs/NextJs
-● Prettier
+- NodeJS/Express
+
+- TypeScript/JavaScript
+- Eslint with Airbnb style-guide
+
+- MongoDB
+
+- ReactJs/NextJs
+
+- Prettier
 
 Areas Left Out due to time constraint
 
@@ -47,35 +51,45 @@ Other Areas application would have been enhanced but not in the scope:
 
 - Server Side Rendering for Products and Product Detail Pages
 - Pagination
-- Deeper code refactoring and Util functions usage
-- Cloud based Image upload (S3)
-- App-wide state management with Redux
-- Animation
--
+
+* Deeper code refactoring and Util functions usage
+* Cloud based Image upload (S3)
+
+  - App-wide state management with Redux
+  - Animation
 
 ## Code Analysis
 
 # Client App
 
-Component Composition follows the Stateless and Statefull Approach (Presentation nd Control layers)
-Objects are flat and unambiguous
-Meager dependency on third party libraries,
-Image Optimization
-Full Applicable Next.js Features
-Component based design for re-usability
-Mini store to handle Notification and Authentication Context
-Emphasis on Component communication and HOC.
+- Component Composition follows the Stateless and Statefull Approach (Presentation nd Control layers)
+- Objects are flat and unambiguous
+
+* Meager dependency on third party libraries,
+* Image Optimization
+
+- Full Applicable Next.js Features
+  - Component based design for re-usability
+  * Mini store to handle Notification and Authentication Context
+  * Emphasis on Component communication and HOC.
 
 # API
 
 [https://maven-shop-api.herokuapp.com]
-To run test locally with client-app change next.config.js env variable to http://localhost:8080
-Authorization and Authentication Middleware
-Global Error Handling
-KISS design: Simple and Flat
-Single Responsibility
-Image Upload uses Folder based approach
-Log directory
+
+- To run test locally with client-app change next.config.js env variable to http://localhost:8080
+
+* Authorization and Authentication Middleware
+
+- Global Error Handling
+
+* KISS design: Simple and Flat
+
+- Single Responsibility
+
+* Image Upload uses Folder based approach
+
+- Log directory
 
 ## Draw back
 
