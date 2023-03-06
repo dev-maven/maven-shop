@@ -51,6 +51,14 @@ h6 {
 	color: white;
 }
 
+.danger_button {
+	background: #c81508;
+}
+
+.danger_button:hover {
+	background: #790f07;
+}
+
 .button:disabled {
 	background: #ccc;
 	color: #888888;
@@ -91,7 +99,7 @@ h6 {
 	margin: 3rem auto;
 	width: 95%;
 	max-width: 50rem;
-	height: 60vh;
+	min-height: 60vh;
 	border-radius: 6px;
 	background-color: #0e1228;
 	box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
@@ -110,10 +118,7 @@ h6 {
 }
 
 .auth label {
-	display: block;
-	color: white;
-	font-weight: bold;
-	margin-bottom: 0.5rem;
+	color: white !important;
 }
 
 .auth .link {
@@ -132,4 +137,19 @@ h6 {
 
 .auth hr {
 	margin: 10px 0 30px;
+}
+
+.loader_wrapper {
+	margin-top: 30vh;
+	display: flex;
+	justify-content: center;
+}
+
+.home {
+	margin-top: 7rem;
+}
+
+.home_action {
+	display: flex;
+	justify-content: flex-end;
 }

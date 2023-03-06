@@ -2,6 +2,7 @@
 /* eslint-disable object-curly-newline */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loader from '../../loader/loader';
 
 export default function Button(props) {
 	const { design, onClick, disabled, loading, type, children } = props;
@@ -10,10 +11,10 @@ export default function Button(props) {
 		<button
 			className={['button', `${design}`].join(' ')}
 			onClick={onClick}
-			disabled={disabled}
+			disabled={disabled || loading}
 			type={type}
 		>
-			{loading ? 'Loading...' : children}
+			{loading ? <Loader type='button' /> : children}
 		</button>
 	);
 }

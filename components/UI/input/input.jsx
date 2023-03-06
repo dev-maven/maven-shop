@@ -26,11 +26,25 @@ function Input(props) {
 		content = (
 			<input
 				type='file'
+				accept='image/jpg, image/png, image.jpeg'
 				id={id}
 				value={value}
 				onBlur={onBlur}
 				onChange={(e) => onChange(e.target.files)}
 			/>
+		);
+	} else if (control === 'select') {
+		content = (
+			<select
+				type='input'
+				id={id}
+				value={value}
+				onBlur={onBlur}
+				onChange={onChange}
+			>
+				<option value='Customer'>Customer</option>
+				<option value='Admin'>Admin</option>
+			</select>
 		);
 	} else {
 		content = (

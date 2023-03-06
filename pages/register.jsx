@@ -1,31 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Input from '../components/UI/input/input';
 import Button from '../components/UI/button/button';
+import NotificationContext from '../store/notification-context';
 
 export default function Register() {
+	const notificationCtx = useContext(NotificationContext);
+	const { showNotification } = notificationCtx;
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [name, setName] = useState('');
+	const [fullName, setName] = useState('');
+	const [userType, setUserType] = useState('Customer');
 	const [isLoading, setIsLoading] = useState(false);
-	const [emailTouched, setEmailTouched] = useState('');
-	const [nameTouched, setNameTouched] = useState('');
-	const [passwordTouched, setPasswordTouched] = useState('');
+	const [emailTouched, setEmailTouched] = useState();
+	const [nameTouched, setNameTouched] = useState();
+	const [passwordTouched, setPasswordTouched] = useState();
+	const [userTypeTouched, setUserTypeTouched] = useState();
+	const router = useRouter();
 
 	const isEmailValid = !/\S+@\S+\.\S+/.test(email) && emailTouched;
 	const isPasswordValid = password.trim() === '' && passwordTouched;
-	const isNameValid = name.trim() === '' && nameTouched;
+	const isNameValid = fullName.trim() === '' && nameTouched;
+	const isUserTypeValid = userType.trim() === '' && userTypeTouched;
 
-	const formValid = !!(email && password && name);
+	const formValid = !!(email && password && fullName);
 
 	const submitHandler = (event) => {
+		setIsLoading(true);
 		event.preventDefault();
 		const inputObj = {
 			email,
 			password,
-			name,
+			fullName,
+			userType,
 		};
-		console.log(inputObj);
+		fetch(`${process.env.apiUrl}/auth/signup`, {
+			method: 'POST',
+			body: JSON.stringify(inputObj),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((response) => {
+				if (response.ok) {
+					return response.json();
+				}
+				return response.json().then((data) => {
+					setIsLoading(false);
+					throw new Error(data.message || 'Something went wrong');
+				});
+			})
+			.then(() => {
+				router.replace('/login');
+				setIsLoading(false);
+			})
+			.catch((error) => {
+				console.log(error);
+				showNotification({
+					title: 'Error',
+					message: 'Email already exist',
+					status: 'error',
+				});
+				setIsLoading(false);
+			});
 	};
 
 	return (
@@ -34,16 +72,16 @@ export default function Register() {
 			<hr />
 			<form onSubmit={submitHandler}>
 				<Input
-					id='name'
+					id='fullName'
 					label='Full Name'
 					type='text'
 					isValid={!isNameValid}
-					value={name}
+					value={fullName}
 					onBlur={() => setNameTouched(true)}
 					onChange={(event) => setName(event.target.value)}
 				/>
 				{isNameValid && (
-					<span className='error_message'>Please enter your full name</span>
+					<span className='error_message'>Please enter your full fullName</span>
 				)}
 				<Input
 					id='email'
@@ -69,6 +107,20 @@ export default function Register() {
 				/>
 				{isPasswordValid && (
 					<span className='error_message'>Please enter password</span>
+				)}
+
+				<Input
+					id='userType'
+					label='User Type'
+					type='select'
+					control='select'
+					isValid={!isUserTypeValid}
+					value={userType}
+					onBlur={() => setUserTypeTouched(true)}
+					onChange={(event) => setUserType(event.target.value)}
+				/>
+				{isUserTypeValid && (
+					<span className='error_message'>Please select user type</span>
 				)}
 
 				<div className='form_actions'>

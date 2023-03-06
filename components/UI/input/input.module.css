@@ -39,7 +39,8 @@
 }
 
 .control label,
-.control input {
+.control input,
+.control select {
 	display: block;
 }
 
@@ -51,7 +52,8 @@
 }
 
 .control input,
-.control textarea {
+.control textarea,
+.control select {
 	flex: 3;
 	font: inherit;
 	padding: 0.35rem 0.35rem;
@@ -60,14 +62,16 @@
 }
 
 .control input:focus,
-.control textarea:focus {
+.control textarea:focus,
+.control select:focus {
 	outline: none;
 	border-color: #4f005f;
 	background: #f6dbfc;
 }
 
 .control.invalid input,
-.control.invalid textarea {
+.control.invalid textarea,
+.control.invalid select {
 	border-color: red;
 	background: #fbdada;
 }

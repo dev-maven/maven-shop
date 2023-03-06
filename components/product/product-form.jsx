@@ -19,11 +19,14 @@ export default function ProductForm(props) {
 		description,
 		price,
 		imageSrc,
+		editMode,
 	} = props;
+	const image = ` ${process.env.apiUrl}/${imageSrc}`;
 
 	const [titleInput, setTitleInput] = useState(title);
 	const [descriptionInput, setDescriptionInput] = useState(description);
 	const [imageInput, setImageInput] = useState(imageSrc);
+	const [imagePreview, setImagePreview] = useState(imageSrc ? image : '');
 	const [priceInput, setPriceInput] = useState(price);
 	const [titleTouched, setTitleTouched] = useState(false);
 	const [descriptionTouched, setDescriptionTouched] = useState(false);
@@ -34,7 +37,7 @@ export default function ProductForm(props) {
 	const isDescriptionValid =
 		descriptionInput.trim() === '' && descriptionTouched;
 	const isPriceValid = priceInput.trim() === '' && priceTouched;
-	const isImageValid = imageInput.trim() === '' && imageTouched;
+	const isImageValid = imagePreview.trim() === '' && imageTouched;
 
 	const formValid = !!(
 		titleInput &&
@@ -48,19 +51,22 @@ export default function ProductForm(props) {
 		const inputObj = {
 			title: titleInput,
 			description: descriptionInput,
-			imageSrc: imageInput,
+			image: imageInput,
 			price: priceInput,
 		};
+
 		acceptModal(inputObj);
 	};
+
 	const imageUploadHandler = (files) => {
 		if (files) {
+			setImageInput(files[0]);
 			generateBase64FromImage(files[0])
 				.then((b64) => {
-					setImageInput(b64);
+					setImagePreview(b64);
 				})
 				.catch(() => {
-					setImageInput('');
+					setImagePreview('');
 				});
 		}
 	};
@@ -98,7 +104,7 @@ export default function ProductForm(props) {
 				<Input
 					id='price'
 					label='Price'
-					type='text'
+					type='number'
 					isValid={!isPriceValid}
 					value={priceInput}
 					onBlur={() => setPriceTouched(true)}
@@ -120,10 +126,10 @@ export default function ProductForm(props) {
 					{isImageValid && (
 						<span className='error_message'>Please choose an image.</span>
 					)}
-					{imageInput && (
+					{imagePreview && imageInput && (
 						<Image
 							className='uploaded_image'
-							src={imageInput}
+							src={imagePreview}
 							alt='uploaded image'
 							width={100}
 							height={100}
@@ -136,7 +142,7 @@ export default function ProductForm(props) {
 						design='stroked_button'
 						onClick={cancelModal}
 						disabled={false}
-						loading={isLoading}
+						loading={false}
 						type='button'
 					>
 						Cancel
@@ -148,7 +154,7 @@ export default function ProductForm(props) {
 						loading={isLoading}
 						type='submit'
 					>
-						Add Product
+						{editMode ? 'Update Product' : 'Add Product'}
 					</Button>
 				</div>
 			</form>
@@ -161,6 +167,7 @@ ProductForm.propTypes = {
 	cancelModal: PropTypes.func.isRequired,
 	acceptModal: PropTypes.func.isRequired,
 	isLoading: PropTypes.bool.isRequired,
+	editMode: PropTypes.bool,
 	title: PropTypes.string,
 	price: PropTypes.string,
 	imageSrc: PropTypes.string,
@@ -172,4 +179,5 @@ ProductForm.defaultProps = {
 	description: '',
 	imageSrc: '',
 	price: '',
+	editMode: false,
 };
