@@ -55,8 +55,8 @@ Other Areas application would have been enhanced but not in the scope:
 * Deeper code refactoring and Util functions usage
 * Cloud based Image upload (S3)
 
-  - App-wide state management with Redux
-  - Animation
+- App-wide state management with Redux
+- Animation
 
 ## Code Analysis
 
@@ -69,9 +69,9 @@ Other Areas application would have been enhanced but not in the scope:
 * Image Optimization
 
 - Full Applicable Next.js Features
-  - Component based design for re-usability
-  * Mini store to handle Notification and Authentication Context
-  * Emphasis on Component communication and HOC.
+- Component based design for re-usability
+- Mini store to handle Notification and Authentication Context
+- Emphasis on Component communication and HOC.
 
 # API
 
